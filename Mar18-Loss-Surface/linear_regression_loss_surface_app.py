@@ -10,7 +10,7 @@ mean squared error (MSE) loss surface.
 Created with assistance from Google's Gemini.
 
 Author: Dylan Cashman (dylancashman@brandeis.edu)
-Date: March 20, 2025
+Date: March 18, 2026
 """
 
 import tkinter as tk
@@ -32,16 +32,18 @@ def create_regression_app():
     y = true_slope * x + np.random.normal(0, 5, 10) # add noise
 
     # Create the left graph (scatter plot with regression line)
-    fig_scatter, ax_scatter = plt.subplots(figsize=(2.5, 2))
+    fig_scatter, ax_scatter = plt.subplots(figsize=(5.5, 5.5))
     ax_scatter.scatter(x, y)
     ax_scatter.set_xlabel("X")
     ax_scatter.set_ylabel("Y")
+    ax_scatter.set_xlim(-1, 12)
+    ax_scatter.set_ylim(-1, 25)
     ax_scatter.set_title("Data and Regression Line")
     canvas_scatter = FigureCanvasTkAgg(fig_scatter, master=root)
     canvas_scatter.get_tk_widget().grid(row=0, column=0, padx=10, pady=10)
 
     # Create the right graph (loss surface)
-    fig_loss, ax_loss = plt.subplots(figsize=(2.5, 2))
+    fig_loss, ax_loss = plt.subplots(figsize=(5.5, 5.5))
     ax_loss.set_xlabel("Slope")
     ax_loss.set_ylabel("Mean Squared Error")
     ax_loss.set_title("Loss Surface")
@@ -65,6 +67,8 @@ def create_regression_app():
         ax_scatter.plot(x, slope * x, color='red') #regression line.
         ax_scatter.set_xlabel("X")
         ax_scatter.set_ylabel("Y")
+        ax_scatter.set_xlim(-1, 12)
+        ax_scatter.set_ylim(-1, 25)
         ax_scatter.set_title("Data and Regression Line")
         canvas_scatter.draw()
 
